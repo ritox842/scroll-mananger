@@ -8,8 +8,4 @@
       "jasmine"
     ]
   },
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
 }
