@@ -1,0 +1,89 @@
+<div
+  [rtxScrollManager]="scrollOptions()"
+  class="demo-container">
+  <div class="controls-panel">
+    <h2>RTX Scroll Manager Demo</h2>
+
+    <div class="scroll-options">
+      <h3>Scroll Options</h3>
+      <div class="option-group">
+        <span class="option-label">Behavior:</span>
+        <select [ngModel]="scrollOptions().behavior" (ngModelChange)="updateScrollOptions({ behavior: $event })">
+          <option value="smooth">Smooth</option>
+          <option value="auto">Auto</option>
+          <option value="instant">Instant</option>
+        </select>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#block" 
+           target="_blank" 
+           class="docs-link"
+           title="Learn more about scroll behavior">
+          <span class="docs-icon">📖</span>
+          <span class="docs-text">Docs</span>
+        </a>
+      </div>
+
+      <div class="option-group">
+        <span class="option-label">Block:</span>
+        <select [ngModel]="scrollOptions().block" (ngModelChange)="updateScrollOptions({ block: $event })">
+          <option value="start">Start</option>
+          <option value="center">Center</option>
+          <option value="end">End</option>
+          <option value="nearest">Nearest</option>
+        </select>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#block" 
+           target="_blank" 
+           class="docs-link"
+           title="Learn more about block alignment">
+          <span class="docs-icon">📖</span>
+          <span class="docs-text">Docs</span>
+        </a>
+      </div>
+
+      <div class="option-group">
+        <span class="option-label">Inline:</span>
+        <select [ngModel]="scrollOptions().inline" (ngModelChange)="updateScrollOptions({ inline: $event })">
+          <option value="start">Start</option>
+          <option value="center">Center</option>
+          <option value="end">End</option>
+          <option value="nearest">Nearest</option>
+        </select>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView#inline" 
+           target="_blank" 
+           class="docs-link"
+           title="Learn more about inline alignment">
+          <span class="docs-icon">📖</span>
+          <span class="docs-text">Docs</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="navigation">
+      <h3>Navigation</h3>
+      <div class="nav-buttons">
+        @for (section of sections; track section.id) {
+          <button
+            [rtxScrollAnchor]="section.id"
+            (click)="selectedSection = section.id"
+            [class.active]="selectedSection === section.id">
+            {{ section.title }}
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+    @for (section of sections; track section.id) {
+      <div
+        [rtxScrollSection]="section.id"
+        class="section">
+        <h2>{{ section.title }}</h2>
+        <p>This is the content for {{ section.title }}. Scroll to this section using the navigation buttons above.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+      </div>
+    }
+  </div>
+</div>
