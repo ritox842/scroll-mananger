@@ -16,4 +16,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Run Tests
-        run: npm run test:headless
+        run: |
+          npm run test:headless | tee test-output.txt
+          grep -q "SUCCESS" test-output.txt || exit 1
