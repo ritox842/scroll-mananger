@@ -1,63 +1,166 @@
-# ScrollManagerLib
+# ritox Scroll Manager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+A powerful and flexible Angular library for managing scroll behavior in your applications. RTX Scroll Manager provides an intuitive way to handle scroll operations with customizable options and smooth animations.
 
-## Code scaffolding
+## Features
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- 🎯 **Precise Control**: Fine-tune scroll behavior with customizable options
+- 🎨 **Smooth Animations**: Built-in support for smooth scrolling
+- 🔄 **Two-way Binding**: Seamless integration with Angular's form controls
+- 📱 **Responsive**: Works across all modern browsers and devices
+- 🛠 **TypeScript Support**: Full type safety and autocompletion
+- 📚 **Well Documented**: Comprehensive documentation and examples
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the library, run:
+## Installation
 
 ```bash
-ng build scroll-manager-lib
+npm install @ritox/scroll-manager
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Quick Start
 
-### Publishing the Library
+1. Import the module in your `app.module.ts`:
 
-Once the project is built, you can publish your library by following these steps:
+```typescript
+import { RtxScrollManagerModule } from 'rtx-scroll-manager';
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/scroll-manager-lib
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+@NgModule({
+  imports: [
+    RtxScrollManagerModule
+  ]
+})
+export class AppModule { }
 ```
 
-## Running end-to-end tests
+2. Use the directive in your template:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```html
+<div [rtxScrollManager]="scrollOptions">
+  <div [rtxScrollSection]="'section1'">
+    <!-- Your content here -->
+  </div>
+  <div [rtxScrollSection]="'section2'">
+    <!-- More content -->
+  </div>
+</div>
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+3. Configure scroll options in your component:
 
-## Additional Resources
+```typescript
+import { Component, signal } from '@angular/core';
+import { ScrollIntoViewOptions } from 'rtx-scroll-manager';
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  scrollOptions = signal<ScrollIntoViewOptions>({
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest'
+  });
+}
+```
+
+## Scroll Options
+
+The library supports all standard `ScrollIntoViewOptions`:
+
+- `behavior`: 'auto' | 'smooth' | 'instant'
+- `block`: 'start' | 'center' | 'end' | 'nearest'
+- `inline`: 'start' | 'center' | 'end' | 'nearest'
+
+## Advanced Usage
+
+### Dynamic Scroll Options
+
+```typescript
+@Component({
+  selector: 'app-root',
+  template: `
+    <div [rtxScrollManager]="scrollOptions()">
+      <div class="controls">
+        <select [(ngModel)]="behavior" (ngModelChange)="updateBehavior($event)">
+          <option value="smooth">Smooth</option>
+          <option value="auto">Auto</option>
+          <option value="instant">Instant</option>
+        </select>
+      </div>
+      <div [rtxScrollSection]="'section1'">
+        <!-- Content -->
+      </div>
+    </div>
+  `
+})
+export class AppComponent {
+  scrollOptions = signal<ScrollIntoViewOptions>({
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest'
+  });
+
+  updateBehavior(behavior: ScrollBehavior) {
+    this.scrollOptions.update(options => ({
+      ...options,
+      behavior
+    }));
+  }
+}
+```
+
+### Navigation with Scroll Anchors
+
+```html
+<div [rtxScrollManager]="scrollOptions()">
+  <nav>
+    <button [rtxScrollAnchor]="'section1'">Section 1</button>
+    <button [rtxScrollAnchor]="'section2'">Section 2</button>
+  </nav>
+  
+  <div [rtxScrollSection]="'section1'">
+    <h2>Section 1</h2>
+    <!-- Content -->
+  </div>
+  
+  <div [rtxScrollSection]="'section2'">
+    <h2>Section 2</h2>
+    <!-- Content -->
+  </div>
+</div>
+```
+
+## Benefits
+
+1. **Simplified Scroll Management**
+  - No need to manually handle scroll events
+  - Clean, declarative syntax
+  - Automatic scroll position calculations
+
+2. **Enhanced User Experience**
+  - Smooth animations out of the box
+  - Consistent behavior across browsers
+  - Accessible navigation patterns
+
+3. **Developer Friendly**
+  - TypeScript support
+  - Angular integration
+  - Minimal configuration required
+
+4. **Performance Optimized**
+  - Efficient scroll handling
+  - Minimal DOM operations
+  - Smooth animations
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT License - feel free to use this library in your projects.
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.

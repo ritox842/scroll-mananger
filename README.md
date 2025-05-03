@@ -1,4 +1,4 @@
-# RTX Scroll Manager
+# ritox Scroll Manager
 
 A powerful and flexible Angular library for managing scroll behavior in your applications. RTX Scroll Manager provides an intuitive way to handle scroll operations with customizable options and smooth animations.
 
@@ -14,7 +14,7 @@ A powerful and flexible Angular library for managing scroll behavior in your app
 ## Installation
 
 ```bash
-npm install rtx-scroll-manager
+npm install @ritox/scroll-manager
 ```
 
 ## Quick Start

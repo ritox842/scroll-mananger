@@ -1,6 +1,6 @@
 {
-  "name": "scroll-manager-lib",
-  "version": "0.0.1",
+  "name": "@ritox/scroll-manager",
+  "version": "1.0.3",
   "peerDependencies": {
     "@angular/core": ">=16.0.0",
     "@angular/common": ">=16.0.0"
