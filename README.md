@@ -1,6 +1,10 @@
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://ritox842.github.io/scroll-mananger/)
+
 # ritox Scroll Manager
 
 A powerful and flexible Angular library for managing scroll behavior in your applications. RTX Scroll Manager provides an intuitive way to handle scroll operations with customizable options and smooth animations.
+[🧪 Live Demo](https://ritox842.github.io/scroll-mananger/)
+
 
 ## Features
 
