@@ -28,7 +28,6 @@ export class RtxScrollSectionDirective implements OnDestroy {
   });
 
   scrollTo() {
-    debugger;
     this.#host.nativeElement.scrollIntoView({
       ...this.#manager.scrollIntoViewOptions(),
       ...this.scrollIntoViewOptions(),

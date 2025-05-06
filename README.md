@@ -22,11 +22,11 @@ npm install @ritox/scroll-manager
 1. Import the module in your `app.module.ts`:
 
 ```typescript
-import { RtxScrollManagerModule } from 'rtx-scroll-manager';
+import { rtxScrollManagerImports } from '@ritox/scroll-manager';
 
 @NgModule({
   imports: [
-    RtxScrollManagerModule
+    ...rtxScrollManagerImports
   ]
 })
 export class AppModule { }
