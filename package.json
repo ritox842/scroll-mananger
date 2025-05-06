@@ -9,7 +9,7 @@
     "test": "ng test",
     "test:headless": "ng test --browsers ChromeHeadless --watch=false",
     "build:lib": "ng build scroll-manager-lib",
-    "publish:lib": "cd dist/scroll-manager-lib && npm publish --access pub lic",
+    "publish:lib": "cd dist/scroll-manager-lib && npm publish --access public",
     "prepare": "husky",
     "lint-staged": "lint-staged"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@ritox/scroll-manager",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "peerDependencies": {
     "@angular/core": ">=16.0.0",
     "@angular/common": ">=16.0.0"
